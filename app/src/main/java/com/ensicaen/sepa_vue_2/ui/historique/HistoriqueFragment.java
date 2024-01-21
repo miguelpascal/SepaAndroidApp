@@ -1,4 +1,4 @@
-package com.ensicaen.sepa_vue_2.ui.gallery;
+package com.ensicaen.sepa_vue_2.ui.historique;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ensicaen.sepa_vue_2.databinding.FragmentGalleryBinding;
+import com.ensicaen.sepa_vue_2.databinding.FragmentHistoriqueBinding;
 
-public class GalleryFragment extends Fragment {
+public class HistoriqueFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+    private FragmentHistoriqueBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
+        HistoriqueViewModel slideshowViewModel =
+                new ViewModelProvider(this).get(HistoriqueViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = FragmentHistoriqueBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textHistorique;
+        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

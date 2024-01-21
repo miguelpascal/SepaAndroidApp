@@ -1,4 +1,4 @@
-package com.ensicaen.sepa_vue_2.ui.slideshow;
+package com.ensicaen.sepa_vue_2.ui.virement;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ensicaen.sepa_vue_2.databinding.FragmentSlideshowBinding;
+import com.ensicaen.sepa_vue_2.databinding.FragmentVirementBinding;
 
-public class SlideshowFragment extends Fragment {
+public class VirementFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentVirementBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        VirementViewModel galleryViewModel =
+                new ViewModelProvider(this).get(VirementViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentVirementBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textVirement;
+        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

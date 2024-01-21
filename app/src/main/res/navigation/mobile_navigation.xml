@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.ensicaen.sepa_vue_2.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_virement"
+        android:name="com.ensicaen.sepa_vue_2.ui.virement.VirementFragment"
+        android:label="@string/menu_virement"
+        tools:layout="@layout/fragment_virement" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.ensicaen.sepa_vue_2.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_historique"
+        android:name="com.ensicaen.sepa_vue_2.ui.historique.HistoriqueFragment"
+        android:label="@string/menu_historique"
+        tools:layout="@layout/fragment_historique" />
 </navigation>

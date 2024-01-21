@@ -24,8 +24,16 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView ibantextView = binding.editTextIban;
+        homeViewModel.getText().observe(getViewLifecycleOwner(), ibantextView::setText);
+        final TextView bictextView = binding.editTextBic;
+        final TextView nametextView = binding.editTextName;
+        final TextView surnametextView = binding.editTextSurname;
+        final TextView amounttextView = binding.editTextAmount;
+        bictextView.setText("BNPAFRPPXXX");
+        nametextView.setText("Kamdem");
+        surnametextView.setText("Pascal Miguel");
+        amounttextView.setText("20000");
         return root;
     }
 
