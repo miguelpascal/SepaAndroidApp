@@ -27,7 +27,7 @@
     <string name="iban">Iban</string>
     <string name="bic">Bic</string>
     <string name="default_bic">Default Bic</string>
-    <string name="euros">Euros</string>
+    <string name="euros">Eur</string>
     <string name="default_iban">Default Iban</string>
     <string name="default_name">Default Name</string>
     <string name="default_surname">Default Surname</string>

@@ -10,7 +10,7 @@ public class VirementViewModel extends ViewModel {
 
     public VirementViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is virement fragment");
+        mText.setValue("Effectuer un virement");
     }
 
     public LiveData<String> getText() {
