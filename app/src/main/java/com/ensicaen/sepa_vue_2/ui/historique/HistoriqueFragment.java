@@ -9,25 +9,34 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.ensicaen.sepa_vue_2.R;
 import com.ensicaen.sepa_vue_2.databinding.FragmentHistoriqueBinding;
 
 public class HistoriqueFragment extends Fragment {
 
     private FragmentHistoriqueBinding binding;
+    private HistoriqueViewModel historiqueViewModel;
+    private RecyclerView recyclerView;
+    private HistoriqueAdapter historiqueAdapter;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        HistoriqueViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(HistoriqueViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        historiqueViewModel = new ViewModelProvider(this).get(HistoriqueViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_historique, container, false);
 
-        binding = FragmentHistoriqueBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        recyclerView = root.findViewById(R.id.recyclerViewHistorique);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        final TextView textView = binding.textHistorique;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        historiqueAdapter = new HistoriqueAdapter();
+        recyclerView.setAdapter(historiqueAdapter);
+
+        historiqueViewModel.getHistoriqueVirements().observe(getViewLifecycleOwner(), historiqueAdapter::setVirements);
+
         return root;
     }
+
 
     @Override
     public void onDestroyView() {
