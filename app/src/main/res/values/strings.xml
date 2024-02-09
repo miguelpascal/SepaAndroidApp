@@ -7,8 +7,8 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="invalid_password">Password must be 4 characters</string>
+    <string name="login_failed">"Login really failed"</string>
     <string name="title_activity_accueil">Accueil </string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -32,4 +32,6 @@
     <string name="default_name">Default Name</string>
     <string name="default_surname">Default Surname</string>
     <string name="historique_des_virements">historique des virements</string>
+    <string name="settings_base_url_default">http://serveur-apprentissage.ensicaen.fr:8080/library/</string>
+    <string name="image_description">Login Image</string>
 </resources>

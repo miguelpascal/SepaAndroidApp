@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SEPA_VUE_2"
+rootProject.name = "SEPA Client"
 include(":app")

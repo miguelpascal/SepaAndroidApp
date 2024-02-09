@@ -1,6 +1,10 @@
 package com.ensicaen.sepa_vue_2.data;
 
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUser;
+import com.ensicaen.sepa_vue_2.ui.login.LoginActivity;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -45,7 +49,9 @@ public class LoginRepository {
 
     public Result<LoggedInUser> login(String username, String password) {
         // handle login
+        Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Demarrage du login");
         Result<LoggedInUser> result = dataSource.login(username, password);
+        Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"FIN du login");
         if (result instanceof Result.Success) {
             setLoggedInUser(((Result.Success<LoggedInUser>) result).getData());
         }

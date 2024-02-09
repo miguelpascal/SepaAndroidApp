@@ -7,7 +7,7 @@
     android:clickable="false"
     android:drawingCacheQuality="auto"
     android:focusable="false"
-    tools:context=".ui.home.HomeFragment">
+    tools:context="com.ensicaen.sepa_vue_2.ui.home.HomeFragment">
 
     <EditText
         android:id="@+id/editTextName"

@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -25,9 +26,10 @@ import android.widget.Toast;
 
 import com.ensicaen.sepa_vue_2.AccueilActivity;
 import com.ensicaen.sepa_vue_2.R;
-import com.ensicaen.sepa_vue_2.ui.login.LoginViewModel;
-import com.ensicaen.sepa_vue_2.ui.login.LoginViewModelFactory;
 import com.ensicaen.sepa_vue_2.databinding.ActivityLoginBinding;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -119,10 +121,32 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AccueilActivity.class);
                 loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                CountDownTimer mCountDownTimer;
+                final int[] i = {0};
+
+                Logger.getLogger("Demarrage du login");
+                Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Demarrage de la requête "+ usernameEditText.getText().toString());
+                Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Demarrage de la requête "+ passwordEditText.getText().toString());
+                loadingProgressBar.setProgress(i[0]);
+                mCountDownTimer=new CountDownTimer(5000,1000) {
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        i[0]++;
+                        loginViewModel.login(usernameEditText.getText().toString(),passwordEditText.getText().toString());
+                        loadingProgressBar.setProgress((int) i[0] *100/(5000/1000));
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        //Do what you want
+                        loadingProgressBar.setProgress(100);
+                    }
+                };
+                mCountDownTimer.start();
+                Intent intent = new Intent(getApplicationContext(), AccueilActivity.class);
                 startActivity(intent);
             }
         });

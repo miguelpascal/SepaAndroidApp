@@ -11,6 +11,9 @@ import com.ensicaen.sepa_vue_2.data.Result;
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUser;
 import com.ensicaen.sepa_vue_2.R;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
@@ -31,11 +34,12 @@ public class LoginViewModel extends ViewModel {
 
     public void login(String username, String password) {
         // can be launched in a separate asynchronous job
+        Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Get Result of the API");
         Result<LoggedInUser> result = loginRepository.login(username, password);
-
+        Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Get Result of the API END!");
         if (result instanceof Result.Success) {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
+            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getLastName())));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
         }
@@ -65,6 +69,6 @@ public class LoginViewModel extends ViewModel {
 
     // A placeholder password validation check
     private boolean isPasswordValid(String password) {
-        return password != null && password.trim().length() > 5;
+        return password != null && password.trim().length() == 4;
     }
 }
