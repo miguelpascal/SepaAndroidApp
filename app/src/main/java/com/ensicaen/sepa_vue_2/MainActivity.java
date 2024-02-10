@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_login);
     }
 
 //    @Override

@@ -17,33 +17,14 @@ import java.util.logging.Logger;
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
-    private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
-    private LoginRepository loginRepository;
 
-    LoginViewModel(LoginRepository loginRepository) {
-        this.loginRepository = loginRepository;
+    public LoginViewModel(LoginRepository instance) {
     }
 
     LiveData<LoginFormState> getLoginFormState() {
         return loginFormState;
     }
 
-    LiveData<LoginResult> getLoginResult() {
-        return loginResult;
-    }
-
-    public void login(String username, String password) {
-        // can be launched in a separate asynchronous job
-        Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Get Result of the API");
-        Result<LoggedInUser> result = loginRepository.login(username, password);
-        Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Get Result of the API END!");
-        if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getLastName())));
-        } else {
-            loginResult.setValue(new LoginResult(R.string.login_failed));
-        }
-    }
 
     public void loginDataChanged(String username, String password) {
         if (!isUserNameValid(username)) {
