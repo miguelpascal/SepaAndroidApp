@@ -43,21 +43,21 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.Vi
         private final TextView dateTextView;
         private final TextView motifTextView;
         private final TextView montantTextView;
-        private final TextView ibanDestinataireTextView;
+        private final TextView destinataireTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             dateTextView = itemView.findViewById(R.id.dateTextView);
             motifTextView = itemView.findViewById(R.id.motifTextView);
             montantTextView = itemView.findViewById(R.id.montantTextView);
-            ibanDestinataireTextView = itemView.findViewById(R.id.ibanDestinataireTextView);
+            destinataireTextView = itemView.findViewById(R.id.ibanDestinataireTextView);
         }
 
         public void bind(HistoriqueModel historiqueModel) {
             dateTextView.setText(historiqueModel.getDate());
             motifTextView.setText(historiqueModel.getMotif());
             montantTextView.setText(historiqueModel.getMontant());
-            ibanDestinataireTextView.setText("IBAN Destinataire: " + historiqueModel.getIbanDestinataire());
+            destinataireTextView.setText("Destinataire: " + historiqueModel.getDestinataire());
         }
     }
 }

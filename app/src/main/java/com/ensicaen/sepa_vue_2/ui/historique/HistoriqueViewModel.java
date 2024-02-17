@@ -27,15 +27,15 @@ public class HistoriqueViewModel extends ViewModel {
         ArrayList<HistoriqueModel> historique = new ArrayList<>();
 
         historique.add(new HistoriqueModel("01/01/2024", "Motif 1", "100.00", "FR1234567890123456789012345"));
-        historique.add(new HistoriqueModel("02/01/2024", "Motif 2", "150.50", "FR9876543210987654321098765"));
+        historique.add(new HistoriqueModel("02/01/2024", "Motif 2", "150.50", "+330681458084"));
+        historique.add(new HistoriqueModel("03/01/2024", "Motif 3", "75.25", "+330681458085"));
+
+        historique.add(new HistoriqueModel("01/01/2024", "Motif 1", "100.00", "FR1234567890123456789012345"));
+        historique.add(new HistoriqueModel("02/01/2024", "Motif 2", "150.50", "+330681458088"));
         historique.add(new HistoriqueModel("03/01/2024", "Motif 3", "75.25", "FR5678901234567890123456789"));
 
         historique.add(new HistoriqueModel("01/01/2024", "Motif 1", "100.00", "FR1234567890123456789012345"));
-        historique.add(new HistoriqueModel("02/01/2024", "Motif 2", "150.50", "FR9876543210987654321098765"));
-        historique.add(new HistoriqueModel("03/01/2024", "Motif 3", "75.25", "FR5678901234567890123456789"));
-
-        historique.add(new HistoriqueModel("01/01/2024", "Motif 1", "100.00", "FR1234567890123456789012345"));
-        historique.add(new HistoriqueModel("02/01/2024", "Motif 2", "150.50", "FR9876543210987654321098765"));
+        historique.add(new HistoriqueModel("02/01/2024", "Motif 2", "150.50", "+330681458080"));
         historique.add(new HistoriqueModel("03/01/2024", "Motif 3", "75.25", "FR5678901234567890123456789"));
         // Ajoutez plus d'objets Virement selon vos besoins
 

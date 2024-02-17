@@ -86,13 +86,15 @@
         android:layout_width="92dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:background="#EFEDED"
         android:labelFor="@id/editTextMotif"
         android:padding="15dp"
         android:text="Motif"
         android:textSize="16sp"
         android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/editTextMotif"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
 
@@ -101,13 +103,15 @@
         android:layout_width="92dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="#EFEDED"
         android:labelFor="@id/editTextPhone"
         android:padding="15dp"
         android:text="Numéro"
         android:textSize="16sp"
         android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/editTextPhone"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editVirTextIban" />
 

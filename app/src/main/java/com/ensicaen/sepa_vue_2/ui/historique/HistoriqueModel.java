@@ -4,13 +4,13 @@ public class HistoriqueModel {
     private final String date;
     private final String motif;
     private final String montant;
-    private final String ibanDestinataire;
+    private final String destinataire;
 
-    public HistoriqueModel(String date, String motif, String montant, String ibanDestinataire) {
+    public HistoriqueModel(String date, String motif, String montant, String destinataire) {
         this.date = date;
         this.motif = motif;
         this.montant = montant;
-        this.ibanDestinataire = ibanDestinataire;
+        this.destinataire = destinataire;
     }
 
     public String getDate() {
@@ -24,5 +24,5 @@ public class HistoriqueModel {
     public String getMontant() {
         return montant;
     }
-    public String getIbanDestinataire() {   return ibanDestinataire;    }
+    public String getDestinataire() {   return destinataire;    }
 }
