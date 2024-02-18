@@ -166,14 +166,14 @@ public class LoginActivity extends AppCompatActivity {
                                     // Recieved a response but not 2xx.
                                     loadingProgressBar.setVisibility(View.INVISIBLE);
                                     Toast.makeText(getApplicationContext(), "User does not exist", Toast.LENGTH_SHORT).show();
-
-                                    Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE,"This user is not existed");
+                                    Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE,"This user does not existed");
                                     // Possibly authentication error. Show error message
                                 }
                             }
                             @Override
                             public void onFailure(Call<LoggedInUser> call, Throwable t) {
                                 Toast.makeText(getApplicationContext(), "Server Unavailable", Toast.LENGTH_SHORT).show();
+                                loadingProgressBar.setVisibility(View.INVISIBLE);
                                 Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE,t.toString());
                             }
                         });

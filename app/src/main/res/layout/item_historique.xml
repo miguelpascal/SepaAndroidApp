@@ -23,9 +23,9 @@
         android:layout_height="wrap_content"
         android:text="Montant: " />
     <TextView
-        android:id="@+id/ibanDestinataireTextView"
+        android:id="@+id/destinataireTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="IBAN Destinataire: " />
+        android:text="Destinataire: " />
 
 </LinearLayout>

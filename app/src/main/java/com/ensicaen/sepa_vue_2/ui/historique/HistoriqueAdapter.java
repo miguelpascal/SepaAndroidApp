@@ -50,7 +50,7 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.Vi
             dateTextView = itemView.findViewById(R.id.dateTextView);
             motifTextView = itemView.findViewById(R.id.motifTextView);
             montantTextView = itemView.findViewById(R.id.montantTextView);
-            destinataireTextView = itemView.findViewById(R.id.ibanDestinataireTextView);
+            destinataireTextView = itemView.findViewById(R.id.destinataireTextView);
         }
 
         public void bind(HistoriqueModel historiqueModel) {
