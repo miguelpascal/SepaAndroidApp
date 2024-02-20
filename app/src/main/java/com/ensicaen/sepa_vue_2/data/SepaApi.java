@@ -2,7 +2,7 @@ package com.ensicaen.sepa_vue_2.data;
 
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.data.model.HistoriqueModel;
-
+import com.ensicaen.sepa_vue_2.data.model.PhoneCredit;
 
 import java.util.ArrayList;
 
@@ -21,4 +21,7 @@ public interface SepaApi {
 
     @GET("comptes/credit/history/{userId}")
     Call <ArrayList<HistoriqueModel>> getHistoriqueUser(@Path("userId") Long userId);
+
+    @POST("comptes/phone/credit")
+    Call creditAccountWithNumber(@Body PhoneCredit phoneCreditDTO);
 }

@@ -24,6 +24,10 @@ public class VirementFragment extends Fragment {
         binding = FragmentVirementBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+
+
+
+
         final TextView textView = binding.textVirement;
         galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
