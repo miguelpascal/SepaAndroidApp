@@ -1,20 +1,24 @@
 package com.ensicaen.sepa_vue_2.data;
 
-import com.ensicaen.sepa_vue_2.data.model.LoggedInUser;
+import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
+import com.ensicaen.sepa_vue_2.data.model.HistoriqueModel;
 
 
-import java.util.List;
+import java.util.ArrayList;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface SepaApi {
 
 
     @POST("comptes/singIn")
-    Call<LoggedInUser>getUserAccount(@Body RequestBody email);
+    Call<LoggedInUserModel>getUserAccount(@Body RequestBody email);
+
+    @GET("comptes/credit/history/{userId}")
+    Call <ArrayList<HistoriqueModel>> getHistoriqueUser(@Path("userId") Long userId);
 }

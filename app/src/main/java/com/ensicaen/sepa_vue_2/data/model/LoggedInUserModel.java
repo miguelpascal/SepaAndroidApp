@@ -3,7 +3,7 @@ package com.ensicaen.sepa_vue_2.data.model;
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
-public class LoggedInUser {
+public class LoggedInUserModel {
     private Long userId;
     private String lastName;
     private  String iban;
@@ -12,11 +12,7 @@ public class LoggedInUser {
     private String currency;
     private String firstName;
 
-    public LoggedInUser(){
-
-    }
-
-    public LoggedInUser(Long userId, String lastName, String surName, String iban, String bic, double amount, String currency) {
+    public LoggedInUserModel(Long userId, String lastName, String surName, String iban, String bic, double amount, String currency) {
         this.userId =userId;
         this.lastName = lastName;
         this.firstName =surName;

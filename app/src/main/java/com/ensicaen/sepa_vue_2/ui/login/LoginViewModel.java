@@ -7,12 +7,7 @@ import androidx.lifecycle.ViewModel;
 import android.util.Patterns;
 
 import com.ensicaen.sepa_vue_2.data.LoginRepository;
-import com.ensicaen.sepa_vue_2.data.Result;
-import com.ensicaen.sepa_vue_2.data.model.LoggedInUser;
 import com.ensicaen.sepa_vue_2.R;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class LoginViewModel extends ViewModel {
 

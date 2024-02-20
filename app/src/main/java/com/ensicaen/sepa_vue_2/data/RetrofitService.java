@@ -1,6 +1,5 @@
 package com.ensicaen.sepa_vue_2.data;
 import com.ensicaen.sepa_vue_2.ui.login.LoginActivity;
-import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -14,13 +13,10 @@ import retrofit2.Retrofit;
 public class RetrofitService{
     private Retrofit retrofit;
     public RetrofitService() {
-        Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Initialisation de retrofit");
         initializeRetrofit();
-        Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Fin initialisation de retrofit");
     }
 
     private void initializeRetrofit() {
-        Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Construction du base URl retrofit");
         try{
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
             httpClient.connectTimeout(0, TimeUnit.MINUTES) // connect timeout

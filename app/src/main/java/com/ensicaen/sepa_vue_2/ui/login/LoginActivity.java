@@ -2,12 +2,9 @@ package com.ensicaen.sepa_vue_2.ui.login;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import android.app.Activity;
-
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -16,10 +13,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -33,14 +28,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ensicaen.sepa_vue_2.AccueilActivity;
-import com.ensicaen.sepa_vue_2.R;
-import com.ensicaen.sepa_vue_2.data.Result;
 import com.ensicaen.sepa_vue_2.data.RetrofitService;
 import com.ensicaen.sepa_vue_2.data.SepaApi;
-import com.ensicaen.sepa_vue_2.data.model.LoggedInUser;
+import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.databinding.ActivityLoginBinding;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -133,9 +125,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-                Logger.getLogger("Demarrage du login");
-                Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Demarrage de la requête "+ usernameEditText.getText().toString());
-                Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Demarrage de la requête "+ passwordEditText.getText().toString());
                 try {
                     // TODO: handle loggedInUser authentication
                     String username = usernameEditText.getText().toString();
@@ -143,14 +132,14 @@ public class LoginActivity extends AppCompatActivity {
                     SepaApi sepaApi = retrofitService.getRetrofit().create(SepaApi.class);
                     RequestBody body =
                             RequestBody.create(MediaType.parse("text/plain"), username);
-                    Call<LoggedInUser> callAsync = sepaApi.getUserAccount(body);
+                    Call<LoggedInUserModel> callAsync = sepaApi.getUserAccount(body);
                     try {
-                        callAsync.enqueue(new Callback<LoggedInUser>() {
+                        callAsync.enqueue(new Callback<LoggedInUserModel>() {
                             @Override
-                            public void onResponse(Call<LoggedInUser> call, Response<LoggedInUser> response) {
+                            public void onResponse(Call<LoggedInUserModel> call, Response<LoggedInUserModel> response) {
                                 if (response.isSuccessful()) {
                                     // status code 2xx. start welcome activity
-                                    LoggedInUser user = new LoggedInUser(response.body().getUserId(), response.body().getLastName(), response.body().getFirstName(), response.body().getIban(), response.body().getBic(), response.body().getAmount(), response.body().getCurrency());
+                                    LoggedInUserModel user = new LoggedInUserModel(response.body().getUserId(), response.body().getLastName(), response.body().getFirstName(), response.body().getIban(), response.body().getBic(), response.body().getAmount(), response.body().getCurrency());
                                     Intent intent = new Intent(getApplicationContext(),AccueilActivity.class);
                                     intent.putExtra("user_id",user.getUserId());
                                     intent.putExtra("iban",user.getIban());
@@ -159,7 +148,6 @@ public class LoginActivity extends AppCompatActivity {
                                     intent.putExtra("lastName",user.getLastName());
                                     intent.putExtra("firstName",user.getFirstName());
                                     intent.putExtra("amount",String.valueOf(user.getAmount()));
-                                    Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO, String.valueOf(user.getAmount()));
                                     activityResultLauncher.launch(intent);
 
                                 } else {
@@ -171,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                             @Override
-                            public void onFailure(Call<LoggedInUser> call, Throwable t) {
+                            public void onFailure(Call<LoggedInUserModel> call, Throwable t) {
                                 Toast.makeText(getApplicationContext(), "Server Unavailable", Toast.LENGTH_SHORT).show();
                                 loadingProgressBar.setVisibility(View.INVISIBLE);
                                 Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE,t.toString());
@@ -188,4 +176,29 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+//    @Override
+//    protected void onResume() {
+//        RetrofitService retrofitService = new RetrofitService();
+//        SepaApi sepaApi = retrofitService.getRetrofit().create(SepaApi.class);
+//        long user_ID = 2;
+//        Call<List<HistoriqueModel>> callAsync = sepaApi.getHistoriqueUser(user_ID);
+//        callAsync.enqueue(new Callback<List<HistoriqueModel>>() {
+//            @Override
+//            public void onResponse(Call<List<HistoriqueModel>> call, Response<List<HistoriqueModel>> response) {
+//                Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO,"Request Done");
+//                if (response.body().size()!=0){
+//                    Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO, String.valueOf(response.body().toString()));
+//                    Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO,"Motif "+ response.body().get(0).getMotif());
+//                } else Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO,"No credit historic for this user");
+//            }
+//            @Override
+//            public void onFailure(Call<List<HistoriqueModel>> call, Throwable t) {
+//                Logger.getLogger(AccueilActivity.class.getName()).log(Level.SEVERE,"failed to fetch data");
+//                Logger.getLogger(AccueilActivity.class.getName()).log(Level.SEVERE,t.toString());
+//            }
+//        });
+//        super.onResume();
+//    }
+
+
 }

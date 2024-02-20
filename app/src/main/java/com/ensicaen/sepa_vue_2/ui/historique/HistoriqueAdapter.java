@@ -8,8 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ensicaen.sepa_vue_2.R;
+import com.ensicaen.sepa_vue_2.data.model.HistoriqueModel;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 // HistoriqueAdapter.java
 public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.ViewHolder> {
 
@@ -54,10 +58,11 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.Vi
         }
 
         public void bind(HistoriqueModel historiqueModel) {
-            dateTextView.setText(historiqueModel.getDate());
-            motifTextView.setText(historiqueModel.getMotif());
-            montantTextView.setText(historiqueModel.getMontant());
-            destinataireTextView.setText("Destinataire: " + historiqueModel.getDestinataire());
+            Logger.getLogger(HistoriqueFragment.class.getName()).log(Level.INFO,"Starting populate RecycleView");
+            dateTextView.setText("Date: " +historiqueModel.getTransactionDate().toString());
+            motifTextView.setText("Motif: " +historiqueModel.getMotif());
+            montantTextView.setText("Montant: " +String.valueOf(historiqueModel.getAmount()));
+            destinataireTextView.setText("Destinataire: " +historiqueModel.getDestinataire());
         }
     }
 }

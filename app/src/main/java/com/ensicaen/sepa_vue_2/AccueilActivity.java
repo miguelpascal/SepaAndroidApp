@@ -4,18 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.ensicaen.sepa_vue_2.data.RetrofitService;
-import com.ensicaen.sepa_vue_2.data.SepaApi;
-import com.ensicaen.sepa_vue_2.data.model.LoggedInUser;
 import com.ensicaen.sepa_vue_2.databinding.ActivityAccueilBinding;
+import com.ensicaen.sepa_vue_2.ui.historique.HistoriqueFragment;
 import com.ensicaen.sepa_vue_2.ui.login.LoginActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -26,18 +25,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class AccueilActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityAccueilBinding binding;
 
-    private EditText iban,bic,lastName,firstName,currency,amount,userId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +40,24 @@ public class AccueilActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         Intent intent = getIntent();
         String welcome = getString(R.string.welcome) + intent.getStringExtra("lastName");
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Bundle bundle = new Bundle();
+        bundle.putString("user_id",intent.getStringExtra("user_id"));
+        intent.putExtras(bundle);
+        HistoriqueFragment historiqueFragment = new HistoriqueFragment();
+        historiqueFragment.setArguments(bundle);
+        fragmentTransaction.commit();
+
+//        bundle.putString("iban",intent.getStringExtra("iban"));
+//        bundle.putString("bic",intent.getStringExtra("bic"));
+//        bundle.putString("currency",intent.getStringExtra("currency"));
+//        bundle.putString("lastName",intent.getStringExtra("user_id"));
+//        bundle.putString("firstName",intent.getStringExtra("firstName"));
+//        bundle.putString("amount",intent.getStringExtra("amount"));
+
+        EditText iban,bic,lastName,firstName,currency,amount,userId;
+
         iban = findViewById(R.id.editTextIban);
         bic = findViewById(R.id.editTextBic);
         lastName = findViewById(R.id.editTextName);
@@ -56,7 +67,6 @@ public class AccueilActivity extends AppCompatActivity {
 
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-        //intent.setText("user_id");
         iban.setText(intent.getStringExtra("iban"));
         iban.setText(intent.getStringExtra("iban"));
         bic.setText(intent.getStringExtra("bic"));
@@ -64,7 +74,6 @@ public class AccueilActivity extends AppCompatActivity {
         lastName.setText(intent.getStringExtra("lastName"));
         firstName.setText(intent.getStringExtra("firstName"));
         amount.setText(intent.getStringExtra("amount"));
-        Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO,intent.getStringExtra("amount"));
 
         setSupportActionBar(binding.appBarAccueil.toolbar);
         binding.appBarAccueil.toolbar.setOnClickListener(new View.OnClickListener() {
