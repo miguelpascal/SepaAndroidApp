@@ -22,9 +22,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class AccueilActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -40,14 +37,14 @@ public class AccueilActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         Intent intent = getIntent();
         String welcome = getString(R.string.welcome) + intent.getStringExtra("lastName");
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Bundle bundle = new Bundle();
-        bundle.putString("user_id",intent.getStringExtra("user_id"));
-        intent.putExtras(bundle);
-        HistoriqueFragment historiqueFragment = new HistoriqueFragment();
-        historiqueFragment.setArguments(bundle);
-        fragmentTransaction.commit();
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        Bundle bundle = new Bundle();
+//        bundle.putString("user_id",intent.getStringExtra("user_id"));
+//        intent.putExtras(bundle);
+//        HistoriqueFragment historiqueFragment = new HistoriqueFragment();
+//        historiqueFragment.setArguments(bundle);
+
 
 //        bundle.putString("iban",intent.getStringExtra("iban"));
 //        bundle.putString("bic",intent.getStringExtra("bic"));

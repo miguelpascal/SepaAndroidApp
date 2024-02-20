@@ -33,6 +33,7 @@ import com.ensicaen.sepa_vue_2.data.SepaApi;
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.databinding.ActivityLoginBinding;
 
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -147,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
                                     intent.putExtra("currency",user.getCurrency());
                                     intent.putExtra("lastName",user.getLastName());
                                     intent.putExtra("firstName",user.getFirstName());
-                                    intent.putExtra("amount",String.valueOf(user.getAmount()));
+                                    intent.putExtra("amount",new DecimalFormat("##.##").format(user.getAmount()));
                                     activityResultLauncher.launch(intent);
 
                                 } else {
@@ -163,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Server Unavailable", Toast.LENGTH_SHORT).show();
                                 loadingProgressBar.setVisibility(View.INVISIBLE);
                                 Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE,t.toString());
+                                Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE,call.request().url() + call.request().method() +call.request());
                             }
                         });
                     } catch (RuntimeException ex) {

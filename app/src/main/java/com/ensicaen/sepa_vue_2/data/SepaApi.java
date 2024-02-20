@@ -23,5 +23,5 @@ public interface SepaApi {
     Call <ArrayList<HistoriqueModel>> getHistoriqueUser(@Path("userId") Long userId);
 
     @POST("comptes/phone/credit")
-    Call creditAccountWithNumber(@Body PhoneCredit phoneCreditDTO);
+    Call<Void> creditAccountWithNumber(@Body PhoneCredit phoneCreditDTO);
 }
