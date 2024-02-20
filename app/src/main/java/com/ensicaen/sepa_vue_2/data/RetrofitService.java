@@ -24,7 +24,7 @@ public class RetrofitService{
                     .readTimeout(0, TimeUnit.MINUTES); // read timeout
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:3000/")
+                    .baseUrl("http://10.0.2.2/")
                     //.baseUrl("http://serveur-apprentissage.ensicaen.fr:8080/library/")
                     //.baseUrl("http://10.214.11.76/")
                     .addConverterFactory(GsonConverterFactory.create())
