@@ -4,16 +4,17 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
+
 public class HomeViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private final MutableLiveData<LoggedInUserModel> homeData = new MutableLiveData<LoggedInUserModel>();
 
-    public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("");
+    public void setHomeData(LoggedInUserModel user) {
+        homeData.setValue(user);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<LoggedInUserModel> getLoggedInUser() {
+        return homeData;
     }
 }

@@ -34,4 +34,5 @@
     <string name="historique_des_virements">historique des virements</string>
     <string name="settings_base_url_default">http://serveur-apprentissage.ensicaen.fr:8080/library/</string>
     <string name="image_description">Login Image</string>
+    <string name="User_Id">User Id</string>
 </resources>

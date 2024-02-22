@@ -32,6 +32,7 @@ import com.ensicaen.sepa_vue_2.data.RetrofitService;
 import com.ensicaen.sepa_vue_2.data.SepaApi;
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.databinding.ActivityLoginBinding;
+import com.ensicaen.sepa_vue_2.ui.home.HomeViewModel;
 
 import java.text.DecimalFormat;
 import java.util.logging.Level;
@@ -47,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
+
+    private HomeViewModel homeViewModel;
     ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -67,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
@@ -141,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (response.isSuccessful()) {
                                     // status code 2xx. start welcome activity
                                     LoggedInUserModel user = new LoggedInUserModel(response.body().getUserId(), response.body().getLastName(), response.body().getFirstName(), response.body().getIban(), response.body().getBic(), response.body().getAmount(), response.body().getCurrency());
+                                    homeViewModel.setHomeData(user);
                                     Intent intent = new Intent(getApplicationContext(),AccueilActivity.class);
                                     intent.putExtra("user_id",user.getUserId());
                                     intent.putExtra("iban",user.getIban());
@@ -178,29 +183,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-//    @Override
-//    protected void onResume() {
-//        RetrofitService retrofitService = new RetrofitService();
-//        SepaApi sepaApi = retrofitService.getRetrofit().create(SepaApi.class);
-//        long user_ID = 2;
-//        Call<List<HistoriqueModel>> callAsync = sepaApi.getHistoriqueUser(user_ID);
-//        callAsync.enqueue(new Callback<List<HistoriqueModel>>() {
-//            @Override
-//            public void onResponse(Call<List<HistoriqueModel>> call, Response<List<HistoriqueModel>> response) {
-//                Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO,"Request Done");
-//                if (response.body().size()!=0){
-//                    Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO, String.valueOf(response.body().toString()));
-//                    Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO,"Motif "+ response.body().get(0).getMotif());
-//                } else Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO,"No credit historic for this user");
-//            }
-//            @Override
-//            public void onFailure(Call<List<HistoriqueModel>> call, Throwable t) {
-//                Logger.getLogger(AccueilActivity.class.getName()).log(Level.SEVERE,"failed to fetch data");
-//                Logger.getLogger(AccueilActivity.class.getName()).log(Level.SEVERE,t.toString());
-//            }
-//        });
-//        super.onResume();
-//    }
-
-
 }

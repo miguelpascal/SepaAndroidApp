@@ -34,9 +34,6 @@ public class HistoriqueFragment extends Fragment {
         recyclerView.setVerticalScrollBarEnabled(true);
         HistoriqueAdapter historiqueAdapter = new HistoriqueAdapter();
         recyclerView.setAdapter(historiqueAdapter);
-        //Intent intent = new Intent(getContext(),AccueilActivity.class);
-        //String user_id = intent.getStringExtra("user_id");
-        //Logger.getLogger(HistoriqueFragment.class.getName()).log(Level.INFO,"This user ID: "+ user_id);
         historiqueViewModel.getHistoriqueVirements().observe(getViewLifecycleOwner(), historiqueAdapter::setVirements);
 
         return root;
