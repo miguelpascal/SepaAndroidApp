@@ -5,6 +5,7 @@ import com.ensicaen.sepa_vue_2.data.model.HistoriqueModel;
 import com.ensicaen.sepa_vue_2.data.model.PhoneCredit;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -19,8 +20,11 @@ public interface SepaApi {
     @POST("comptes/singIn")
     Call<LoggedInUserModel>getUserAccount(@Body RequestBody email);
 
+    @GET("comptes/user/home/{userID}")
+    Call<LoggedInUserModel>getUserAccountByID(@Path("userId") Long userId);
+
     @GET("comptes/credit/history/{userId}")
-    Call <ArrayList<HistoriqueModel>> getHistoriqueUser(@Path("userId") Long userId);
+    Call <List<HistoriqueModel>> getHistoriqueUser(@Path("userId") Long userId);
 
     @POST("comptes/phone/credit")
     Call<Void> creditAccountWithNumber(@Body PhoneCredit phoneCreditDTO);
