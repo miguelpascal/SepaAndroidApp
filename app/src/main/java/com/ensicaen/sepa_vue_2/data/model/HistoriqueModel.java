@@ -17,7 +17,6 @@ public class HistoriqueModel {
     private final String destinataire;
 
 
-
     public HistoriqueModel(Date date, String motif, double montant, String mode, String destinataire) {
         this.transactionDate = date;
         this.motif = motif;
