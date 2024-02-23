@@ -11,15 +11,16 @@ import com.ensicaen.sepa_vue_2.R;
 import com.ensicaen.sepa_vue_2.data.model.HistoriqueModel;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 // HistoriqueAdapter.java
 public class HistoriqueAdapter extends RecyclerView.Adapter<HistoriqueAdapter.ViewHolder> {
 
-    private ArrayList<HistoriqueModel> historiqueModels = new ArrayList<>();
+    private List<HistoriqueModel> historiqueModels = new ArrayList<>();
 
-    public void setVirements(ArrayList<HistoriqueModel> historiqueModels) {
+    public void setVirements(List<HistoriqueModel> historiqueModels) {
         this.historiqueModels = historiqueModels;
         notifyDataSetChanged();
     }
