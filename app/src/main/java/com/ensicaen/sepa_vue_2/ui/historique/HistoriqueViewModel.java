@@ -15,6 +15,7 @@ import retrofit2.Response;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,48 +23,46 @@ public class HistoriqueViewModel extends ViewModel {
 
 
     private final MutableLiveData<String> mText;
-    final MutableLiveData<ArrayList<HistoriqueModel>> historiqueVirements;
+    final MutableLiveData<List<HistoriqueModel>> historiqueVirements;
 
 
     public HistoriqueViewModel() {
         historiqueVirements = new MutableLiveData<>();
         mText = new MutableLiveData<>();
         mText.setValue("Historique des virements");
-        chargerHistoriqueVirements();
     }
 
-    public LiveData<ArrayList<HistoriqueModel>> getHistoriqueVirements() {
+    public LiveData<List<HistoriqueModel>> getHistoriqueVirements() {
         // Appel de la méthode pour charger l'historique
         return historiqueVirements;
     }
 
-    private void chargerHistoriqueVirements() {
+    public void chargerHistoriqueVirements(long user_ID) {
         // Simulation de l'obtention de l'historique des virements depuis une source de données
-        ArrayList<HistoriqueModel> historique = new ArrayList<>();
+        List<HistoriqueModel> historiques = new ArrayList<>();
         // Ajoutez plus d'objets Virement selon vos besoins
         RetrofitService retrofitService = new RetrofitService();
         SepaApi sepaApi = retrofitService.getRetrofit().create(SepaApi.class);
-        long user_ID = 2;
-        Call<ArrayList<HistoriqueModel>> callAsync = sepaApi.getHistoriqueUser(user_ID);
-        callAsync.enqueue(new Callback<ArrayList<HistoriqueModel>>() {
+        Call<List<HistoriqueModel>> callAsync = sepaApi.getHistoriqueUser(user_ID);
+        callAsync.enqueue(new Callback<List<HistoriqueModel>>() {
             @Override
-            public void onResponse(Call<ArrayList<HistoriqueModel>> call, Response<ArrayList<HistoriqueModel>> response) {
+            public void onResponse(Call<List<HistoriqueModel>> call, Response<List<HistoriqueModel>> response) {
                 if (response.body().size()!=0){
                     for (HistoriqueModel hist:response.body()) {
-                        historique.add(new HistoriqueModel(hist.getTransactionDate(), hist.getMotif(), hist.getAmount(), hist.getMode(), hist.getDestinataire()));
+                        historiques.add(new HistoriqueModel(hist.getTransactionDate(), hist.getMotif(), hist.getAmount(), hist.getMode(), hist.getDestinataire()));
                         Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO, hist.toString());
                     }
 
                 } else Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO,"No credit historic for this user");
             }
             @Override
-            public void onFailure(Call<ArrayList<HistoriqueModel>> call, Throwable t) {
+            public void onFailure(Call<List<HistoriqueModel>> call, Throwable t) {
                 Logger.getLogger(AccueilActivity.class.getName()).log(Level.SEVERE,"failed to fetch data");
                 Logger.getLogger(AccueilActivity.class.getName()).log(Level.SEVERE,t.toString());
             }
         });
         // Mettez à jour le LiveData avec l'historique obtenu
-        historiqueVirements.setValue(historique);
+        historiqueVirements.setValue(historiques);
     }
 
 

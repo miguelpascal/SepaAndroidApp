@@ -37,7 +37,10 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         final LoggedInUserModel user = getActivity().getIntent().getParcelableExtra("LoggedInUser");
-        if (user != null) sepaViewModel.setLoggedInUser(user);
+        if (user != null) {
+            sepaViewModel.setLoggedInUser(user);
+            sepaViewModel.getHistoriqueVirements(user.getUserId());
+        }
 
         iban = binding.editTextIban;
         bic = binding.editTextBic;
