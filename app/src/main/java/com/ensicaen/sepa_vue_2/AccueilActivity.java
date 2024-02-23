@@ -2,18 +2,21 @@ package com.ensicaen.sepa_vue_2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ensicaen.sepa_vue_2.data.RetrofitService;
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.databinding.ActivityAccueilBinding;
-import com.ensicaen.sepa_vue_2.ui.home.HomeViewModel;
+import com.ensicaen.sepa_vue_2.ui.home.SepaViewModel;
 import com.ensicaen.sepa_vue_2.ui.login.LoginActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,12 +24,15 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class AccueilActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityAccueilBinding binding;
 
-    private HomeViewModel homeViewModel;
+    private SepaViewModel sepaViewModel;
 
 
     @Override
@@ -35,50 +41,11 @@ public class AccueilActivity extends AppCompatActivity {
 
         binding = ActivityAccueilBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Intent intent = getIntent();
-        String welcome = getString(R.string.welcome) + intent.getStringExtra("lastName");
-        EditText iban,bic,lastName,firstName,currency,amount,userId,ibanVir;
-
-        iban = findViewById(R.id.editTextIban);
-        ibanVir = findViewById(R.id.editVirTextIban);
-        bic = findViewById(R.id.editTextBic);
-        lastName = findViewById(R.id.editTextName);
-        firstName = findViewById(R.id.editTextSurname);
-        amount = findViewById(R.id.editTextAmount);
-        currency = findViewById(R.id.editTextCurrency);
-        userId = findViewById(R.id.userId);
-
-
-        // TODO : initiate successful logged in experience
-        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-        iban.setText(intent.getStringExtra("iban"));
-        bic.setText(intent.getStringExtra("bic"));
-        currency.setText(intent.getStringExtra("currency"));
-        lastName.setText(intent.getStringExtra("lastName"));
-        firstName.setText(intent.getStringExtra("firstName"));
-        amount.setText(intent.getStringExtra("amount"));
-//        userId.setText(intent.getStringExtra("user_id"));
-//        LoggedInUserModel user = new LoggedInUserModel()
-//        homeViewModel.setHomeData();
-//
-//        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-//        homeViewModel.getLoggedInUser().observe(this, user -> {
-//            iban.setText(user.getIban());
-//            ibanVir.setText(user.getIban());
-//            bic.setText(user.getBic());
-//            currency.setText(user.getCurrency());
-//            lastName.setText(user.getLastName());
-//            firstName.setText(user.getFirstName());
-//            amount.setText(new DecimalFormat("##.##").format(user.getAmount()));
-//            userId.setText(user.getUserId().toString());
-//
-//        });
-
         setSupportActionBar(binding.appBarAccueil.toolbar);
         binding.appBarAccueil.toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, welcome, Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "welcome", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
