@@ -32,7 +32,7 @@ import com.ensicaen.sepa_vue_2.data.RetrofitService;
 import com.ensicaen.sepa_vue_2.data.SepaApi;
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.databinding.ActivityLoginBinding;
-import com.ensicaen.sepa_vue_2.ui.home.HomeViewModel;
+import com.ensicaen.sepa_vue_2.ui.home.SepaViewModel;
 
 import java.text.DecimalFormat;
 import java.util.logging.Level;
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
 
-    private HomeViewModel homeViewModel;
+    private SepaViewModel sepaViewModel;
     ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        sepaViewModel = new ViewModelProvider(this).get(SepaViewModel.class);
 
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
@@ -118,8 +118,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-//                    loginViewModel.login(usernameEditText.getText().toString(),
-//                            passwordEditText.getText().toString());
                 }
                 return false;
             }
@@ -144,16 +142,10 @@ public class LoginActivity extends AppCompatActivity {
                             public void onResponse(Call<LoggedInUserModel> call, Response<LoggedInUserModel> response) {
                                 if (response.isSuccessful()) {
                                     // status code 2xx. start welcome activity
-                                    LoggedInUserModel user = new LoggedInUserModel(response.body().getUserId(), response.body().getLastName(), response.body().getFirstName(), response.body().getIban(), response.body().getBic(), response.body().getAmount(), response.body().getCurrency());
-                                    homeViewModel.setHomeData(user);
+                                    final LoggedInUserModel user = response.body();
+                                    Logger.getLogger(LoginActivity.class.getSimpleName()).info("*******User Id******** ="+ user.getUserId());
                                     Intent intent = new Intent(getApplicationContext(),AccueilActivity.class);
-                                    intent.putExtra("user_id",user.getUserId());
-                                    intent.putExtra("iban",user.getIban());
-                                    intent.putExtra("bic",user.getBic());
-                                    intent.putExtra("currency",user.getCurrency());
-                                    intent.putExtra("lastName",user.getLastName());
-                                    intent.putExtra("firstName",user.getFirstName());
-                                    intent.putExtra("amount",new DecimalFormat("##.##").format(user.getAmount()));
+                                    intent.putExtra("LoggedInUser", user);
                                     activityResultLauncher.launch(intent);
 
                                 } else {
