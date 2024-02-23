@@ -24,16 +24,16 @@ public class RetrofitService{
                     .readTimeout(0, TimeUnit.MINUTES); // read timeout
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.245.146.109/")
+                    .baseUrl("http://192.168.137.1/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
 
         } catch (Exception e){
-            Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,retrofit + e.toString());
+            Logger.getLogger(RetrofitService.class.getName()).log(Level.INFO,retrofit + e.toString());
             throw e;
         }
-        Logger.getLogger(LoginActivity.class.getName()).log(Level.INFO,"Fin de construction du base URl retrofit");
+        Logger.getLogger(RetrofitService.class.getName()).log(Level.INFO,"Fin de construction du base URl retrofit");
     }
     public Retrofit getRetrofit() {
         return retrofit;
