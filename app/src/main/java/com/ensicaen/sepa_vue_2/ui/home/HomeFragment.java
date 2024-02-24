@@ -1,8 +1,5 @@
 package com.ensicaen.sepa_vue_2.ui.home;
 
-import static android.content.Intent.getIntent;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +8,9 @@ import android.widget.EditText;
 
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ensicaen.sepa_vue_2.AccueilActivity;
-import com.ensicaen.sepa_vue_2.R;
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.databinding.FragmentHomeBinding;
 

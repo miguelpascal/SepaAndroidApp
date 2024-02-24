@@ -24,10 +24,10 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ensicaen.sepa_vue_2.AccueilActivity;
+import com.ensicaen.sepa_vue_2.SepaActivity;
 import com.ensicaen.sepa_vue_2.R;
-import com.ensicaen.sepa_vue_2.data.RetrofitService;
-import com.ensicaen.sepa_vue_2.data.SepaApi;
+import com.ensicaen.sepa_vue_2.service.RetrofitService;
+import com.ensicaen.sepa_vue_2.api.SepaApi;
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.data.model.PhoneCredit;
 import com.ensicaen.sepa_vue_2.databinding.FragmentVirementBinding;
@@ -143,7 +143,7 @@ public class VirementFragment extends Fragment {
                 .setContentTitle("Virement")
                 .setContentText("Credit transaction success")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        Intent notificationIntent = new Intent(getContext(), AccueilActivity.class);
+        Intent notificationIntent = new Intent(getContext(), SepaActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(getContext(), 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(contentIntent);
 

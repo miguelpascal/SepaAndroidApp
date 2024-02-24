@@ -1,5 +1,4 @@
-package com.ensicaen.sepa_vue_2.data;
-import com.ensicaen.sepa_vue_2.ui.login.LoginActivity;
+package com.ensicaen.sepa_vue_2.service;
 
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;

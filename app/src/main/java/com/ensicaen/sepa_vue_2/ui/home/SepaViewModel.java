@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.ensicaen.sepa_vue_2.AccueilActivity;
-import com.ensicaen.sepa_vue_2.data.RetrofitService;
-import com.ensicaen.sepa_vue_2.data.SepaApi;
+import com.ensicaen.sepa_vue_2.SepaActivity;
+import com.ensicaen.sepa_vue_2.service.RetrofitService;
+import com.ensicaen.sepa_vue_2.api.SepaApi;
 import com.ensicaen.sepa_vue_2.data.model.HistoriqueModel;
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 
@@ -60,15 +60,15 @@ public class SepaViewModel extends ViewModel {
                 if (response.body().size()!=0){
                     for (HistoriqueModel hist:response.body()) {
                         historique.add(new HistoriqueModel(hist.getTransactionDate(), hist.getMotif(), hist.getAmount(), hist.getMode(), hist.getDestinataire()));
-                        Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO, hist.toString());
+                        Logger.getLogger(SepaActivity.class.getName()).log(Level.INFO, hist.toString());
                     }
 
-                } else Logger.getLogger(AccueilActivity.class.getName()).log(Level.INFO,"No credit historic for this user");
+                } else Logger.getLogger(SepaActivity.class.getName()).log(Level.INFO,"No credit historic for this user");
             }
             @Override
             public void onFailure(Call<List<HistoriqueModel>> call, Throwable t) {
-                Logger.getLogger(AccueilActivity.class.getName()).log(Level.SEVERE,"failed to fetch data");
-                Logger.getLogger(AccueilActivity.class.getName()).log(Level.SEVERE,t.toString());
+                Logger.getLogger(SepaActivity.class.getName()).log(Level.SEVERE,"failed to fetch data");
+                Logger.getLogger(SepaActivity.class.getName()).log(Level.SEVERE,t.toString());
             }
         });
         // Mettez à jour le LiveData avec l'historique obtenu

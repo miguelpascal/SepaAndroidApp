@@ -2,21 +2,15 @@ package com.ensicaen.sepa_vue_2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.ensicaen.sepa_vue_2.data.RetrofitService;
-import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.databinding.ActivityAccueilBinding;
 import com.ensicaen.sepa_vue_2.ui.home.SepaViewModel;
 import com.ensicaen.sepa_vue_2.ui.login.LoginActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,10 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-public class AccueilActivity extends AppCompatActivity {
+public class SepaActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityAccueilBinding binding;

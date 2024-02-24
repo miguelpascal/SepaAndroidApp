@@ -1,10 +1,9 @@
-package com.ensicaen.sepa_vue_2.data;
+package com.ensicaen.sepa_vue_2.api;
 
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.data.model.HistoriqueModel;
 import com.ensicaen.sepa_vue_2.data.model.PhoneCredit;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.RequestBody;

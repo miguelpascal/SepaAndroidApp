@@ -1,6 +1,5 @@
 package com.ensicaen.sepa_vue_2.ui.historique;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,16 +11,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ensicaen.sepa_vue_2.AccueilActivity;
 import com.ensicaen.sepa_vue_2.R;
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.databinding.FragmentHistoriqueBinding;
-import com.ensicaen.sepa_vue_2.databinding.FragmentVirementBinding;
-import com.ensicaen.sepa_vue_2.ui.home.SepaViewModel;
-
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class HistoriqueFragment extends Fragment {

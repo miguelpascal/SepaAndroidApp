@@ -27,14 +27,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ensicaen.sepa_vue_2.AccueilActivity;
-import com.ensicaen.sepa_vue_2.data.RetrofitService;
-import com.ensicaen.sepa_vue_2.data.SepaApi;
+import com.ensicaen.sepa_vue_2.SepaActivity;
+import com.ensicaen.sepa_vue_2.service.RetrofitService;
+import com.ensicaen.sepa_vue_2.api.SepaApi;
 import com.ensicaen.sepa_vue_2.data.model.LoggedInUserModel;
 import com.ensicaen.sepa_vue_2.databinding.ActivityLoginBinding;
 import com.ensicaen.sepa_vue_2.ui.home.SepaViewModel;
 
-import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -144,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                                     // status code 2xx. start welcome activity
                                     final LoggedInUserModel user = response.body();
                                     Logger.getLogger(LoginActivity.class.getSimpleName()).info("*******User Id******** ="+ user.getUserId());
-                                    Intent intent = new Intent(getApplicationContext(),AccueilActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), SepaActivity.class);
                                     intent.putExtra("LoggedInUser", user);
                                     activityResultLauncher.launch(intent);
 
