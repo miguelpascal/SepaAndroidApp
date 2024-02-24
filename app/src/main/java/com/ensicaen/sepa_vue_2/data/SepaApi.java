@@ -20,11 +20,11 @@ public interface SepaApi {
     @POST("comptes/singIn")
     Call<LoggedInUserModel>getUserAccount(@Body RequestBody email);
 
-    @GET("comptes/user/home/{userID}")
-    Call<LoggedInUserModel>getUserAccountByID(@Path("userId") Long userId);
+    @GET("comptes/user/home/{userId}")
+    Call<LoggedInUserModel>getUserAccountByID(@Path("userId") long userId);
 
     @GET("comptes/credit/history/{userId}")
-    Call <List<HistoriqueModel>> getHistoriqueUser(@Path("userId") Long userId);
+    Call <List<HistoriqueModel>> getHistoriqueUser(@Path("userId") long userId);
 
     @POST("comptes/phone/credit")
     Call<Void> creditAccountWithNumber(@Body PhoneCredit phoneCreditDTO);
