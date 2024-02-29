@@ -22,6 +22,7 @@
     <string name="menu_historique">Historique</string>
     <string name="editTextAmount" >Amount</string>
     <string name="prenoms">Prenoms</string>
+    <string name="solde">Solde</string>
     <string name="montant">Montant</string>
     <string name="nom">Nom</string>
     <string name="iban">Iban</string>

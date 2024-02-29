@@ -21,7 +21,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private SepaViewModel sepaViewModel;
-    private EditText iban,bic,lastName,firstName,currency,amount;
+    private EditText iban,bic,lastName,firstName,currency, balance;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         bic = binding.editTextBic;
         lastName = binding.editTextName;
         firstName = binding.editTextSurname;
-        amount = binding.editTextAmount;
+        balance = binding.editTextBalance;
         currency = binding.editTextCurrency;
 
         return root;
@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
             currency.setText(user.getCurrency());
             lastName.setText(user.getLastName());
             firstName.setText(user.getFirstName());
-            amount.setText(new DecimalFormat("##.##").format(user.getBalance()));
+            balance.setText(new DecimalFormat("##.##").format(user.getBalance()));
         });
         super.onResume();
     }
