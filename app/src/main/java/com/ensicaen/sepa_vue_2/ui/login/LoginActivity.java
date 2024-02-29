@@ -148,9 +148,7 @@ public class LoginActivity extends AppCompatActivity {
                                     activityResultLauncher.launch(intent);
 
                                 } else {
-
                                     // Recieved a response but not 2xx.
-                                    // error case
                                     switch (response.code()) {
                                         case 404:
                                             Toast.makeText(getApplicationContext(), " Request not found", Toast.LENGTH_SHORT).show();
