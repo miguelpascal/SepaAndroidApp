@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
             currency.setText(user.getCurrency());
             lastName.setText(user.getLastName());
             firstName.setText(user.getFirstName());
-            amount.setText(new DecimalFormat("##.##").format(user.getAmount()));
+            amount.setText(new DecimalFormat("##.##").format(user.getBalance()));
         });
         super.onResume();
     }

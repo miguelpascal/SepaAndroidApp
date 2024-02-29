@@ -148,16 +148,27 @@ public class LoginActivity extends AppCompatActivity {
                                     activityResultLauncher.launch(intent);
 
                                 } else {
+
                                     // Recieved a response but not 2xx.
+                                    // error case
+                                    switch (response.code()) {
+                                        case 404:
+                                            Toast.makeText(getApplicationContext(), " Request not found", Toast.LENGTH_SHORT).show();
+                                            break;
+                                        case 500:
+                                            Toast.makeText(getApplicationContext(), "User does not exist", Toast.LENGTH_SHORT).show();
+                                            Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE,"This user does not existed");
+                                            break;
+                                        default:
+                                            Toast.makeText(getApplicationContext(), "Unknown error", Toast.LENGTH_SHORT).show();
+                                            break;
+                                    }
                                     loadingProgressBar.setVisibility(View.INVISIBLE);
-                                    Toast.makeText(getApplicationContext(), "User does not exist", Toast.LENGTH_SHORT).show();
-                                    Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE,"This user does not existed");
-                                    // Possibly authentication error. Show error message
                                 }
                             }
                             @Override
                             public void onFailure(Call<LoggedInUserModel> call, Throwable t) {
-                                Toast.makeText(getApplicationContext(), "Server Unavailable", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Server Unavailable, please verify your network", Toast.LENGTH_SHORT).show();
                                 loadingProgressBar.setVisibility(View.INVISIBLE);
                                 Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE,t.toString());
                                 Logger.getLogger(LoginActivity.class.getName()).log(Level.SEVERE,call.request().url() + call.request().method() +call.request());

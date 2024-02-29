@@ -16,7 +16,7 @@ import retrofit2.http.Path;
 public interface SepaApi {
 
 
-    @POST("comptes/singIn")
+    @POST("comptes/signIn")
     Call<LoggedInUserModel>getUserAccount(@Body RequestBody email);
 
     @GET("comptes/user/home/{userId}")

@@ -13,7 +13,7 @@ public class LoggedInUserModel implements Parcelable {
     private String lastName;
     private  String iban;
     private String bic;
-    private double amount;
+    private double balance;
     private String currency;
     private String firstName;
 
@@ -23,7 +23,7 @@ public class LoggedInUserModel implements Parcelable {
         this.firstName =surName;
         this.iban =iban;
         this.bic =bic;
-        this.amount =amount;
+        this.balance =amount;
         this.currency =currency;
     }
 
@@ -47,8 +47,8 @@ public class LoggedInUserModel implements Parcelable {
         return lastName;
     }
 
-    public double getAmount() {
-        return amount;
+    public double getBalance() {
+        return balance;
     }
 
     public String getIban() {
@@ -78,7 +78,7 @@ public class LoggedInUserModel implements Parcelable {
         out.writeString(lastName);
         out.writeString(iban);
         out.writeString(bic);
-        out.writeDouble(amount);
+        out.writeDouble(balance);
         out.writeString(currency);
         out.writeString(firstName);
     }
@@ -88,7 +88,7 @@ public class LoggedInUserModel implements Parcelable {
         lastName = in.readString();
         iban = in.readString();
         bic = in.readString();
-        amount = in.readDouble();
+        balance = in.readDouble();
         currency = in.readString();
         firstName = in.readString();
     }
