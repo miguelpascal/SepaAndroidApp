@@ -57,7 +57,7 @@ public class HistoriqueViewModel extends ViewModel {
             }
             @Override
             public void onFailure(Call<List<HistoriqueModel>> call, Throwable t) {
-                Logger.getLogger(SepaActivity.class.getName()).log(Level.SEVERE,"failed to fetch data");
+                Logger.getLogger(SepaActivity.class.getName()).log(Level.SEVERE,"Server Unavailable, please verify your network");
                 Logger.getLogger(SepaActivity.class.getName()).log(Level.SEVERE,t.toString());
             }
         });
