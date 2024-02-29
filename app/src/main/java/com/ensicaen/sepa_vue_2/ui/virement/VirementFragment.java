@@ -96,6 +96,7 @@ public class VirementFragment extends Fragment {
                                             amount.setText("");
                                             motif.setText("");
                                             phone.setText("");
+                                            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
 
                                         } else {
 
