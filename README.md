@@ -4,6 +4,7 @@
 ## Description
 
 Ce projet est conçu dans le but de proposer un client Android permettant de se connecter à un serveur. Le serveur permet de réaliser les virements instantanées SEPA.
+Le serveur se trouve
 
 ## Configuration de l'adresse serveur
 
@@ -96,7 +97,7 @@ Sepa client
 
 ## Visuals
 
-
+https://ensicaenfr.sharepoint.com/:v:/s/MTSISO20022/EVfO99rNrUJOnMTlW2wsi_sBC-_4H3TcoYHx4UWGowMzwQ?e=4bzpuw
 
 ## Installation
 le fichier d'installation apk se trouve dans le répertoire
