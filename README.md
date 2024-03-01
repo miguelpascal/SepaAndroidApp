@@ -4,7 +4,7 @@
 ## Description
 
 Ce projet est conçu dans le but de proposer un client Android permettant de se connecter à un serveur. Le serveur permet de réaliser les virements instantanées SEPA.
-Le serveur se trouve
+Le serveur se trouve  à travers ce lien https://gitlab.ecole.ensicaen.fr/kamdem/sepa-app-server.git
 
 ## Configuration de l'adresse serveur
 
