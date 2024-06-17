@@ -104,11 +104,9 @@ le fichier d'installation apk se trouve dans le répertoire
 #### app/build/outputs/apk/debug ####
 
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
 ## Authors and acknowledgment
-Pascal KAMDEM, Pamela Monthe
+* Pascal KAMDEM (pascal.miguel.kamdem@gmail.com)
+* Pamela Monthe
 
 ## License
 For open source projects, say how it is licensed.
